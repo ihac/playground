@@ -1,4 +1,4 @@
-import { ApolloServer, gql } from 'apollo-server';
+import { ApolloServer, gql } from "apollo-server";
 
 const typeDefs = gql`
   type Book {
@@ -21,44 +21,46 @@ const typeDefs = gql`
 
 const books = [
   {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
+    title: "The Awakening",
+    author: "Kate Chopin",
   },
   {
-    title: 'City of Glass',
-    author: 'Paul Auster',
+    title: "City of Glass",
+    author: "Paul Auster",
   },
   {
     title: "One Piece",
-    author:  "Luffy Xiao",
+    author: "Luffy Xiao",
   },
   {
     title: "One Piece II",
-    author:"Luffy Xiao",
+    author: "Luffy Xiao",
   },
 ];
 
 const authors = [
   {
-    name: 'Kate Chopin',
+    name: "Kate Chopin",
   },
   {
-    name: 'Paul Auster',
+    name: "Paul Auster",
   },
   {
-    name: 'Luffy Xiao',
+    name: "Luffy Xiao",
   },
-]
+];
 
 const resolvers = {
   Author: {
-    books: (parent: any) => books.filter(b => b.author === parent.name)
+    books: (parent: any) => books.filter((b) => b.author === parent.name),
   },
   Query: {
     books: () => books,
     authors: () => authors,
-    bookByTitle: (parent: any, args: any, context: any, info: any) => books.find(b => b.title === args.title),
-    author: (parent: any, args: any, context: any, info: any) => authors.find(a => a.name === args.name),
+    bookByTitle: (parent: any, args: any, context: any, info: any) =>
+      books.find((b) => b.title === args.title),
+    author: (parent: any, args: any, context: any, info: any) =>
+      authors.find((a) => a.name === args.name),
   },
 };
 
