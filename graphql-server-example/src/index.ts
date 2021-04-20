@@ -4,6 +4,7 @@ const typeDefs = gql`
   type Book {
     title: String!
     author: Author!
+    reviews: [Review!]
   }
 
   type Author {
@@ -11,13 +12,44 @@ const typeDefs = gql`
     books: [Book!]
   }
 
+  type Review {
+    book: String!
+    rating: Float!
+    reviewer: String!
+  }
+
   type Query {
     books: [Book!]
     authors: [Author!]
-    bookByTitle(title: String!): Book
+    reviews: [Review!]
+
+    book(title: String!): Book
     author(name: String!): Author
   }
 `;
+
+const reviews = [
+  {
+    book: "The Awakening",
+    rating: 3.9,
+    reviewer: "Penny",
+  },
+  {
+    book: "The Awakening",
+    rating: 4.1,
+    reviewer: "Leonard",
+  },
+  {
+    book: "One Piece",
+    rating: 4.3,
+    reviewer: "Yao",
+  },
+  {
+    book: "One Piece II",
+    rating: 4.9,
+    reviewer: "Yuan",
+  },
+];
 
 const books = [
   {
@@ -54,10 +86,14 @@ const resolvers = {
   Author: {
     books: (parent: any) => books.filter((b) => b.author === parent.name),
   },
+  Book: {
+    reviews: (parent: any) => reviews.filter((r) => r.book === parent.title),
+  },
   Query: {
     books: () => books,
     authors: () => authors,
-    bookByTitle: (parent: any, args: any, context: any, info: any) =>
+    reviews: () => reviews,
+    book: (parent: any, args: any, context: any, info: any) =>
       books.find((b) => b.title === args.title),
     author: (parent: any, args: any, context: any, info: any) =>
       authors.find((a) => a.name === args.name),
