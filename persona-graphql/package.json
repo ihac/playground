@@ -1,0 +1,27 @@
+{
+  "name": "persona-graphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon",
+    "lint": "eslint . --ext .ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Luffy Xiao",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^14.14.41",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "apollo-datasource-rest": "^0.12.0",
+    "apollo-server": "^2.23.0",
+    "eslint": "^7.24.0",
+    "graphql": "^15.5.0",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  }
+}
