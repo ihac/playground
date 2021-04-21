@@ -13,8 +13,9 @@ const resolvers = {
     books: () => books,
     authors: () => authors,
     reviews: () => reviews,
-    book: (parent: any, args: any) => books.find((b) => b.title === args.title),
-    author: (parent: any, args: any) =>
+    book: (_parent: any, args: any) =>
+      books.find((b) => b.title === args.title),
+    author: (_parent: any, args: any) =>
       authors.find((a) => a.name === args.name),
   },
 };
