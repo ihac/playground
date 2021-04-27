@@ -21,6 +21,11 @@ const server = new ApolloServer({
       personaLayoutAPI: new PersonaLayoutAPI(),
     };
   },
+  context({ req }) {
+    return {
+      rawHeaders: { ...req.headers },
+    };
+  },
 });
 
 server.listen().then(({ url }) => {
