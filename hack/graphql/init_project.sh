@@ -1,7 +1,7 @@
 #! /bin/bash
 
 npm init --yes
-npm install -D apollo-server graphql apollo-datasource-rest \
+npm install -D apollo-server graphql apollo-datasource-rest @apollo/gateway \
     typescript @types/node ts-node nodemon eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 
 npx tsc --init  --rootDir src --outDir build --esModuleInterop --resolveJsonModule --lib ES2020 --module ES2020 --allowJs true --noImplicitAny true --target ES2020 --moduleResolution node

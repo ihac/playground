@@ -1,13 +1,13 @@
 import { gql } from "apollo-server";
 
 export default gql`
-  type Response {
-    body: Results
+  type CMSResponse {
+    body: MenuBody
     statusCodeValue: Int
     statusCode: String
   }
 
-  type Results {
+  type MenuBody {
     results: MenuResponse
   }
 
@@ -34,6 +34,6 @@ export default gql`
   }
 
   type Query {
-    menu: Response
+    menu: CMSResponse
   }
 `;

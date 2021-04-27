@@ -1,17 +1,17 @@
 import { gql } from "apollo-server";
 
 export default gql`
-  type Response {
-    body: Results
+  type PLSResponse {
+    body: PLSBody
     statusCodeValue: Int
     statusCode: String
   }
 
-  type Results {
-    results: Result
+  type PLSBody {
+    results: LayoutResponse
   }
 
-  type Result {
+  type LayoutResponse {
     uri: String
     pageType: String
     responseType: String
@@ -71,6 +71,6 @@ export default gql`
   }
 
   type Query {
-    compositePage(pageId: String!, param: Param): Response
+    compositePage(pageId: String!, param: Param): PLSResponse
   }
 `;

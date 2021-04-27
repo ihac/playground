@@ -1,4 +1,5 @@
 import { ApolloServer } from "apollo-server";
+import { buildFederatedSchema } from "@apollo/federation";
 import traySchema from "./schema/tray.js";
 import { PersonaLayoutAPI } from "./api/persona-layout.js";
 
@@ -14,8 +15,7 @@ const resolvers = {
 };
 
 const server = new ApolloServer({
-  typeDefs: [traySchema],
-  resolvers,
+  schema: buildFederatedSchema([{ typeDefs: traySchema, resolvers }]),
   dataSources() {
     return {
       personaLayoutAPI: new PersonaLayoutAPI(),
@@ -28,6 +28,6 @@ const server = new ApolloServer({
   },
 });
 
-server.listen().then(({ url }) => {
+server.listen({ port: 4001 }).then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });

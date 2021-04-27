@@ -1,0 +1,72 @@
+type Error {
+  code: String
+  message: String
+}
+
+type LayoutResponse {
+  uri: String
+  pageType: String
+  responseType: String
+  trays: Page
+}
+
+type Page {
+  items: [Tray!]
+  responseType: String
+  nextOffsetURL: String
+  offset: Int
+  size: Int
+  totalPageResults: Int
+  totalPages: Int
+  totalResults: Int
+}
+
+input Param {
+  uqIds: String
+  offset: Int
+  size: Int
+  tao: Int
+  tas: Int
+}
+
+type PLSBody {
+  results: LayoutResponse
+}
+
+type PLSResponse {
+  body: PLSBody
+  statusCodeValue: Int
+  statusCode: String
+}
+
+type Query {
+  compositePage(pageId: String!, param: Param): PLSResponse
+}
+
+type Tray {
+  addIdentifier: String
+  globalId: String
+  id: Int
+  title: String
+  traySource: String
+  traySourceId: Int
+  trayTypeId: Int
+  uqId: String
+  uri: String
+  layoutType: String
+  maxAge: Int
+  assets: TrayAssets
+  error: Error
+  recLayoutType: String
+}
+
+type TrayAssets {
+  itemIds: [String!]
+  nextOffsetURL: String
+  updated_at: Int
+  offset: Int
+  size: Int
+  totalPageResults: Int
+  totalPages: Int
+  totalResults: Int
+}

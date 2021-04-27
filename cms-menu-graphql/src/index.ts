@@ -1,5 +1,6 @@
 import { ApolloServer } from "apollo-server";
-import traySchema from "./schema/menu.js";
+import { buildFederatedSchema } from "@apollo/federation";
+import menuSchema from "./schema/menu.js";
 import { CMSAPI } from "./api/cms-geccomp.js";
 
 const resolvers = {
@@ -11,8 +12,7 @@ const resolvers = {
 };
 
 const server = new ApolloServer({
-  typeDefs: [traySchema],
-  resolvers,
+  schema: buildFederatedSchema([{ typeDefs: menuSchema, resolvers }]),
   introspection: true,
   dataSources() {
     return {
@@ -26,6 +26,6 @@ const server = new ApolloServer({
   },
 });
 
-server.listen().then(({ url }) => {
+server.listen({ port: 4002 }).then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });

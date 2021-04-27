@@ -1,5 +1,5 @@
 {
-  "name": "cms-menu-graphql",
+  "name": "graphql-gateway-poc",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,7 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "@apollo/federation": "^0.23.2",
+    "@apollo/gateway": "^0.26.3",
     "@types/node": "^15.0.0",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",

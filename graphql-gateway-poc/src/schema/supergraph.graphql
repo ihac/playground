@@ -1,0 +1,129 @@
+schema
+  @core(feature: "https://specs.apollo.dev/core/v0.1"),
+  @core(feature: "https://specs.apollo.dev/join/v0.1")
+{
+  query: Query
+}
+
+directive @core(feature: String!) repeatable on SCHEMA
+
+directive @join__field(graph: join__Graph, requires: join__FieldSet, provides: join__FieldSet) on FIELD_DEFINITION
+
+directive @join__type(graph: join__Graph!, key: join__FieldSet) repeatable on OBJECT | INTERFACE
+
+directive @join__owner(graph: join__Graph!) on OBJECT | INTERFACE
+
+directive @join__graph(name: String!, url: String!) on ENUM_VALUE
+
+type CMSResponse {
+  body: MenuBody
+  statusCodeValue: Int
+  statusCode: String
+}
+
+type Error {
+  code: String
+  message: String
+}
+
+scalar join__FieldSet
+
+enum join__Graph {
+  CMS @join__graph(name: "cms" url: "http://localhost:4002/graphql")
+  PLS @join__graph(name: "pls" url: "http://localhost:4001/graphql")
+}
+
+type LayoutResponse {
+  uri: String
+  pageType: String
+  responseType: String
+  trays: Page
+}
+
+type MenuBody {
+  results: MenuResponse
+}
+
+type MenuItem {
+  id: Int
+  name: String
+  pageUri: String
+  categoryId: Int
+  contentId: Int
+  pageType: String
+  subItem: [MenuItem!]
+  menuItemViewType: String
+  displayName: String
+  urlModifier: String
+  pageProvider: String
+  globalId: String
+  pageId: String
+}
+
+type MenuResponse {
+  title: String
+  responseType: String
+  menuItems: [MenuItem!]
+}
+
+type Page {
+  items: [Tray!]
+  responseType: String
+  nextOffsetURL: String
+  offset: Int
+  size: Int
+  totalPageResults: Int
+  totalPages: Int
+  totalResults: Int
+}
+
+input Param {
+  uqIds: String
+  offset: Int
+  size: Int
+  tao: Int
+  tas: Int
+}
+
+type PLSBody {
+  results: LayoutResponse
+}
+
+type PLSResponse {
+  body: PLSBody
+  statusCodeValue: Int
+  statusCode: String
+}
+
+type Query {
+  menu: CMSResponse @join__field(graph: CMS)
+  compositePage(pageId: String!, param: Param): PLSResponse @join__field(graph: PLS)
+}
+
+type Tray {
+  addIdentifier: String
+  globalId: String
+  id: Int
+  title: String
+  traySource: String
+  traySourceId: Int
+  trayTypeId: Int
+  uqId: String
+  uri: String
+  layoutType: String
+  maxAge: Int
+  assets: TrayAssets
+  error: Error
+  recLayoutType: String
+}
+
+type TrayAssets {
+  itemIds: [String!]
+  nextOffsetURL: String
+  updated_at: Int
+  offset: Int
+  size: Int
+  totalPageResults: Int
+  totalPages: Int
+  totalResults: Int
+}
