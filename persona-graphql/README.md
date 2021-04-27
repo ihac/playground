@@ -28,3 +28,16 @@ curl 'http://localhost:4000/graphql' \
   --data-raw '{"operationName":null,"variables":{},"query":"{\n  compositePage(pageId: \"1959\") {\n    body {\n      results {\n        trays {\n          items {\n            title\n          }\n        }\n      }\n    }\n  }\n}\n"}' \
   --compressed
 ```
+
+HTTP headers for GraphQL playground:
+
+```json
+{
+  "Accept-Language": "eng",
+  "x-client-version": "1001",
+  "x-country-code": "in",
+  "x-subscription-code": "FREE",
+  "x-platform-code": "ANDROID",
+  "X-HS-UserToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ1bV9hY2Nlc3MiLCJleHAiOjE2MTg4MzYwNjgsImlhdCI6MTYxODgzNTc2OCwiaXNzIjoiVFMiLCJqdGkiOiI0OTk2M2YxNmI1NDk0ZWI0YTVhNDdhYjE0NjViZWYwZiIsInN1YiI6IntcImhJZFwiOlwiOWYzMzI2MTljZGI4NDYyOTlkNTgzOTY0NDE3ZGI3ZDRcIixcInBJZFwiOlwiOTZjNjY1NjcxYTJiNGY3Y2E4MzY4MjVkNDBkMjM3NzZcIixcIm5hbWVcIjpcIkd1ZXN0IFVzZXJcIixcImlwXCI6XCIxMTQuMjUzLjI0LjE5OFwiLFwiY291bnRyeUNvZGVcIjpcImluXCIsXCJjdXN0b21lclR5cGVcIjpcIm51XCIsXCJ0eXBlXCI6XCJndWVzdFwiLFwiaXNFbWFpbFZlcmlmaWVkXCI6ZmFsc2UsXCJpc1Bob25lVmVyaWZpZWRcIjpmYWxzZSxcImRldmljZUlkXCI6XCJjMTNlNDc5Yi0zYWIxLTQ5OTUtOTA0MS1lNzVhNmIxODQwY2FcIixcInByb2ZpbGVcIjpcIkFEVUxUXCIsXCJ2ZXJzaW9uXCI6XCJ2MlwiLFwic3Vic2NyaXB0aW9uc1wiOntcImluXCI6e319LFwiaXNzdWVkQXRcIjoxNjE4ODM1NzY4NDQyfSIsInZlcnNpb24iOiIxXzAifQ._Y5OrDKdqSVZDoJDrmH31HDbz4pVFbtD6-zVFRK5t94"
+}
+```
