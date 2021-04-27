@@ -1,4 +1,4 @@
-# Persona GraphQL
+# CMS Menu GraphQL
 
 Local test:
 
@@ -25,6 +25,6 @@ curl 'http://localhost:4000/graphql' \
   -H 'Sec-Fetch-Mode: cors' \
   -H 'Sec-Fetch-Dest: empty' \
   -H 'Referer: http://localhost:4000/' \
-  --data-raw '{"operationName":null,"variables":{},"query":"{\n  compositePage(pageId: \"1959\") {\n    body {\n      results {\n        trays {\n          items {\n            title\n          }\n        }\n      }\n    }\n  }\n}\n"}' \
+  --data-raw '{"operationName":null,"variables":{},"query":"{\n  menu {\n    statusCode\n    body {\n      results {\n        title\n        menuItems {\n          name\n          subItem {\n            name\n          }\n        }\n      }\n    }\n  }\n}\n"}' \
   --compressed
 ```
