@@ -48,6 +48,6 @@ EOF
 ## manual setting
 
 # package.json: 
-#  - "type": "module",
-#  - "start:dev": "nodemon",
-#  - "lint": "eslint . --ext .ts",
+#   "type": "module",
+#   "start:dev": "nodemon",
+#   "lint": "eslint . --ext .ts",

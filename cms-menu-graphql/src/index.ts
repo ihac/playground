@@ -13,6 +13,7 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs: [traySchema],
   resolvers,
+  introspection: true,
   dataSources() {
     return {
       cmsAPI: new CMSAPI(),

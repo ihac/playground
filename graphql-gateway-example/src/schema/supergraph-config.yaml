@@ -1,0 +1,9 @@
+subgraphs:
+  products:
+    routing_url: https://7bssbnldib.execute-api.us-east-1.amazonaws.com/Prod/graphql
+    schema:
+      file: ./products.graphql
+  reviews:
+    routing_url: https://w0jtezo2pa.execute-api.us-east-1.amazonaws.com/Prod/graphql
+    schema:
+      file: ./reviews.graphql
