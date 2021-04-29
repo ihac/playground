@@ -33,9 +33,35 @@ export class PersonaLayoutAPI extends RESTDataSource {
 
   async getCompositePage(
     pageId: string,
-    params: URLSearchParamsInit = {}
+    params: URLSearchParamsInit = {},
+    nextPage = false
   ): Promise<unknown> {
-    return this.get(`/o/v2/page/${pageId}`, params);
+    const res = await this.get(`/o/v2/page/${pageId}`, params);
+    if (!nextPage) {
+      return res;
+    }
+    return this.get(res.body.results.trays.nextOffsetURL).then((nres) => {
+      return {
+        ...nres,
+        body: {
+          ...nres.body,
+          results: {
+            ...nres.body.results,
+            trays: {
+              ...nres.body.results.trays,
+              items: [
+                ...res.body.results.trays.items,
+                ...nres.body.results.trays.items,
+              ],
+            },
+          },
+        },
+      };
+    });
+  }
+
+  async sendRawRequest(url: string): Promise<unknown> {
+    return this.get(url);
   }
 
   async getTrays(

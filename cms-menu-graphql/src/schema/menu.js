@@ -17,6 +17,7 @@ export default gql`
     menuItems: [MenuItem!]
   }
 
+  """ MenuItem defines something """
   type MenuItem {
       id: Int
       name: String

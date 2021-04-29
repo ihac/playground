@@ -44,6 +44,7 @@ type MenuBody {
   results: MenuResponse
 }
 
+""" MenuItem defines something """
 type MenuItem {
   id: Int
   name: String
@@ -66,6 +67,7 @@ type MenuResponse {
   menuItems: [MenuItem!]
 }
 
+""" Page defines something """
 type Page {
   items: [Tray!]
   responseType: String
@@ -97,13 +99,15 @@ type PLSResponse {
 
 type Query {
   menu: CMSResponse @join__field(graph: CMS)
-  compositePage(pageId: String!, param: Param): PLSResponse @join__field(graph: PLS)
+  compositePage(pageId: String!, param: Param, nextPage: Boolean): PLSResponse @join__field(graph: PLS)
 }
 
 type Tray {
   addIdentifier: String
   globalId: String
   id: Int
+
+  """ This is the title of the tray """
   title: String
   traySource: String
   traySourceId: Int

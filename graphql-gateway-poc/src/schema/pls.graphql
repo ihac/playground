@@ -10,6 +10,7 @@ type LayoutResponse {
   trays: Page
 }
 
+""" Page defines something """
 type Page {
   items: [Tray!]
   responseType: String
@@ -40,13 +41,15 @@ type PLSResponse {
 }
 
 type Query {
-  compositePage(pageId: String!, param: Param): PLSResponse
+  compositePage(pageId: String!, param: Param, nextPage: Boolean): PLSResponse
 }
 
 type Tray {
   addIdentifier: String
   globalId: String
   id: Int
+
+  """ This is the title of the tray """
   title: String
   traySource: String
   traySourceId: Int

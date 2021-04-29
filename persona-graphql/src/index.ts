@@ -8,7 +8,8 @@ const resolvers = {
     compositePage: async (_parent: any, args: any, context: any) => {
       return context.dataSources.personaLayoutAPI.getCompositePage(
         args.pageId,
-        { ...args.params }
+        { ...args.param },
+        args.nextPage
       );
     },
   },

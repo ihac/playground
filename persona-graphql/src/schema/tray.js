@@ -18,6 +18,7 @@ export default gql`
     trays: Page
   }
 
+  """ Page defines something """
   type Page {
     items: [Tray!]
     responseType: String
@@ -33,6 +34,7 @@ export default gql`
     addIdentifier: String
     globalId: String
     id: Int
+    """ This is the title of the tray """
     title: String
     traySource: String
     traySourceId: Int
@@ -71,6 +73,6 @@ export default gql`
   }
 
   type Query {
-    compositePage(pageId: String!, param: Param): PLSResponse
+    compositePage(pageId: String!, param: Param, nextPage: Boolean): PLSResponse
   }
 `;
