@@ -6,6 +6,6 @@ func (l *LPVOrchestrator) Orchestrate() string {
 	return "LPVOrchestrator"
 }
 
-func NewLPVController() *LPVOrchestrator {
+func NewLPVOrchestrator() *LPVOrchestrator {
 	return &LPVOrchestrator{}
 }

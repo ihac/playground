@@ -10,7 +10,7 @@ import (
 
 func main() {
 	lpvClient := lpvImpl.NewLPVClientImpl()
-	orchestrator := orchestratorImpl.NewLPVController()
+	orchestrator := orchestratorImpl.NewLPVOrchestrator()
 	lpvController, err := controller.NewLPVController(
 		orchestrator,
 		lpvClient,
